@@ -1,0 +1,29 @@
+<%- model_class = @cart.class -%>
+<% unless cart.line_items.empty? %>
+<div class="form-actions">
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<div class="cart_title">Your Cart</div>
+ <table>
+   <%= render(@cart.line_items) %>
+
+       <tr class="total_line">
+
+       <td colspan="2">Total</td>
+       <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+       </tr>
+
+ </table>
+<hr />
+<table>
+
+<tr>
+<td><%= button_to "Checkout", new_order_path, class: "btn btn-success", method: :get %></td>
+<td><%= button_to 'Empty cart', @cart,class: "btn btn-danger", method: :delete, confirm: 'Are you sure?' %></td>
+<td></td>
+
+</tr>
+</table>
+
+  
+<% end %>
+</div>
