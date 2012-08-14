@@ -1,28 +1,27 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+<div data-pjax-container>
 <h1>Your Mobile Store</h1>
 <div class="container"  style="display:inline;">
 <ul class="thumbnails">
 <% @products.each do |product| %>
 	<div class="entry">
-<li class="span3">
-
-   <div class="thumbnail">
+         <li class="span3">
+         <div class="thumbnail">
 	 <%= image_tag(product.image_url) %>
 	    <h3><%= product.title %></h3>
 		<div class="caption">
 	    	 <div class="price_line">
              	 <p> <span class="price">Price :<%= number_to_currency(product.price) %></span></p></div>
-
                  <a class="btn btn-info" data-toggle="modal" href="#myModal_<%= product.id %>" >More info</a>
                  <i class= "icon-shopping-cart" ><%= button_to 'Add to Cart', line_items_path(product_id: product),class: "btn btn-primary", remote: true %></i>
 
     </div>
   </div>
- </div>
-</li>
 
+</li>
+</div>
 <div class="modal hide" id="myModal_<%= product.id %>">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">×</button>
@@ -40,5 +39,6 @@
 
 <% end %>
 </ul>
+</div>
 </div>
 

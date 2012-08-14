@@ -11,6 +11,7 @@ end
 
 module Depot
   class Application < Rails::Application
+   config.middleware.use Rack::Pjax
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -55,5 +56,22 @@ module Depot
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "yourdomain.dev",
+    :user_name            => "from@yourdomain.dev",
+    :password             => "Super-Secure-Password",
+    :authentication       => :plain,
+    :enable_starttls_auto => true
+}
+
+config.action_mailer.default_url_options = {
+  :host => "yourdomain.dev"
+}
+
+
+
   end
 end
+

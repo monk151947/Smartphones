@@ -23,6 +23,8 @@ gem 'rb-readline'
 gem 'jquery-rails'
 gem 'yomu'
 gem 'pg'
+
+gem 'rack-pjax'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

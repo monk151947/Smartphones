@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.pjax
 //= require twitter/bootstrap
 //= require_tree .
+
+$('.nav').pjax('[data-pjax-container]');
 
