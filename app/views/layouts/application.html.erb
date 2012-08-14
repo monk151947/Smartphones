@@ -30,25 +30,20 @@
     </div>
   </div>
 
-<div 'data-pjax-container'>
+<div data-pjax-container>
 <div class="container">
-<%#= render :partial => "shared/flash_messages", :locals => {:flash => flash} %>
   <div class="row">
     <div class="span9"><%= yield %></div>
     <div class="span3">
- <div id="cart" >
+     <div id="cart" >
 	<% if @cart %>
 	 <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
 	 <%= render @cart %>
 	<% end %>
 	<% end %>
- </div>
-
-      <h2>About Us</h2>
-      <p>A smartphone is a mobile phone built on a mobile computing platform, with more advanced computing ability and connectivity than a feature phone.The first smartphones mainly combined the functions of a personal digital assistant (PDA) and a mobile phone or camera phone. Today's models also serve to combine the functions of portable media players, low-end compact digital cameras, pocket video cameras, and GPS navigation units. Modern smartphones typically also include high-resolution touchscreens, web browsers that can access and properly display standard web pages rather than just mobile-optimized sites, and high-speed data access via Wi-Fi and mobile broadband.</p>
-    </div>
-  </div>
-</div>
+      </div>
+     </div>
+   </div>
 </div>
 
 <script type="text/javascript">
