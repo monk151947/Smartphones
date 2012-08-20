@@ -3,5 +3,11 @@ class StoreController < ApplicationController
 @products= Product.all
 @cart = current_cart
   end
+
+def about_us
+
+end
+
+
 end
 
