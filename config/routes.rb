@@ -6,7 +6,7 @@ Depot::Application.routes.draw do
   resources :carts
 
   get "store/index"
-  match 'store/about_us'  => 'store#about_us'
+  match '/about_us'  => 'store#about_us'
 
   resources :products do
    get :who_bought, on: :member
