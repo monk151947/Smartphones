@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Depot</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
- <%= render "layouts/async_javascript", path: "application" %>
-   <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">Smartphone Store</a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li><%= link_to "Browse Products", products_path %></li>
-            <li><%= link_to "Store", store_path %></li>
-            <li><%= link_to "Orders", orders_path %></li>
-            <li><%= link_to "Cart", carts_path %></li>
-            <li><%= link_to "Contact Us" %></li>
-            <li><%= link_to "About Us",  '/about_us' %></li>
-          </ul>
+  <head>
+    <title>Depot</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= render "layouts/async_javascript", path: "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Smartphone Store</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Browse Products", products_path %></li>
+              <li><%= link_to "Store", store_path %></li>
+              <li><%= link_to "Orders", orders_path %></li>
+              <li><%= link_to "Cart", carts_path %></li>
+              <li><%= link_to "Contact Us" %></li>
+              <li><%= link_to "About Us",  '/about_us' %></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-<div data-pjax-container>
-<div class="container">
-  <div class="row">
-    <div class="span9"><%= yield %></div>
-    <div class="span3">
-     <div id="cart" >
-	<% if @cart %>
-	 <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-	 <%= render @cart %>
-	<% end %>
-	<% end %>
+    <div data-pjax-container>
+      <div class="container">
+        <div class="row">
+          <div class="span9"><%= yield %></div>
+          <div class="span3">
+            <div id="cart" >
+              <% if @cart %>
+                <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+                  <%= render @cart %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
      </div>
-   </div>
-</div>
+      <script type="text/javascript">
+        $(document).ready(function() {
 
-<script type="text/javascript">
-  $(document).ready(function() {
-
-$("#quantity_quantity").live("blur", (function(){
-var id = $(this).attr('num');
-var value = $(this).val();
-var v = {quantity : value}
-$.ajax({
-type : "POST",
-url: '/line_items/'+id,
-   data: { _method:'PUT', line_item : v},
-headers: {
-   'X-Transaction': 'POST Example',
-       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-   },
-success: function(transport){
+          $("#quantity_quantity").live("blur", (function(){
+            var id = $(this).attr('num');
+            var value = $(this).val();
+            var v = {quantity : value}
+            $.ajax({
+              type : "POST",
+              url: '/line_items/'+id,
+              data: { _method:'PUT', line_item : v},
+              headers: {
+                'X-Transaction': 'POST Example',
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+              },
+              success: function(transport){
                 jQuery('#cart').html(transport);
 
-            }
+              }
 
-});
+            });
 
-}));
-  }); //document.ready
-</script>
-</body>
+          }));
+        }); //document.ready
+      </script>
+  </body>
 
-      <footer class="footer">
-<hr>
- <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built by Jagdish Barabari <a href="http://twitter.com/jagdish104" target="_blank">@twitter</a></p>
-        <p>
-</a>.</p>
-      </footer>
-
+  <footer class="footer">
+    <hr>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>Any suggestions and comments  <a href="http://twitter.com/jagdish104" target="_blank">@twitter</a></p>
+    <p>
+      </a>.</p>
+  </footer>
+  </hr>
 
 </html>
 
