@@ -1,38 +1,37 @@
 <div pjax-data-container>
-<div class="container"  style="display:inline;">
-  <ul class="thumbnails">
-    <% @products.each do |product| %>
-      <li class="span3">
-        <div class="thumbnail">
-          <img src="http://dl.dropbox.com/u/14840749/HTC%20Wildfire%20S.jpg" height="195" width="260"  alt="product">
-          <div class="caption">
-            <h5><%= product.title %></h5>
-            <p style="color:red"><b>$<%= product.price %></b></p>
-            <p> <a class="btn btn-info" data-toggle="modal" href="#myModal_<%= product.id %>" >More info</a>
-              <%= button_to 'Add to Cart', line_items_path(product_id: product),class: "btn btn-primary", remote: true %>
-            </p>
+  <div class="container"  style="display:inline;">
+    <ul class="thumbnails">
+      <% @products.each do |product| %>
+        <li class="span3">
+          <div class="view view-third">
+            <img src="http://dl.dropbox.com/u/14840749/<%= product.id %>.jpg"height="200" width="260" alt="product">
+            <div class="mask">
+              <h2><%= product.title %></h2>
+              <h1><%= button_to 'Add to Cart', line_items_path(product_id: product),class: "btn btn-primary", remote: true %>
+                </h1></div>
+            </div>
+
+          </li>
+
+          <div class="modal hide" id="myModal_<%= product.id %>">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">×</button>
+              <h3><%= product.title %></h3>
+            </div>
+            <div class="modal-body">
+              <p>
+                <%= sanitize(product.description) %>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+            </div>
           </div>
-        </div>
-      </li>
 
-      <div class="modal hide" id="myModal_<%= product.id %>">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h3><%= product.title %></h3>
-        </div>
-        <div class="modal-body">
-          <p>
-              <%= sanitize(product.description) %>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
-        </div>
-      </div>
+        <% end %>
+      </ul>
+    </div>
 
-    <% end %>
-  </ul>
-</div>
+  </div>
 
-</div>
 
