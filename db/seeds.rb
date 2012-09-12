@@ -22,7 +22,7 @@ The HTC One V features a unique curvedchin design that makes it easy to hold and
   :price => 300)
 
 
-Product.create(:title => 'HTC Exploror ',
+Product.create(:title => 'HTC Explore ',
   :description =>
     %{<p>
 HTC Explorer is the simply smarter phone that puts YOU in control. An intuitive, easy to use lockscreen and homescreen let you access your most important information and tasks. Enjoy web browsing similar to your desktop. Keep in touch with loved ones even easier with email designed for easy navigation and quick reply. And the People Widget lets you group up your favorite people and view all your communication options on one screen for simple access.
