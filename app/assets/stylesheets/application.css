@@ -7,7 +7,6 @@
 */
 
 
-
 .modal-footer:before,
 .modal-footer:after {
   display: table;
@@ -26,4 +25,3 @@
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
 }
-
