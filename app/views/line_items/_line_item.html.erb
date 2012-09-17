@@ -4,8 +4,13 @@
   </tr>
 <% end %>
 <tr>
-  <td><img src="http://dl.dropbox.com/u/14840749/<%= line_item.product.id %>.jpg"height="90" width="70" alt="product"></td>
-  <td><%= text_field :quantity, :quantity, :value => line_item.quantity, :class => "input-mini", :num => line_item.id  %>&times;</td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+	  <td><img src="http://dl.dropbox.com/u/14840749/<%= line_item.product.id %>.jpg"height="90" width="70" alt="product"></td>
+	  <td><%= text_field :quantity, :quantity, :value => line_item.quantity, :style =>"width: 38px;", :num => line_item.id  %>&times;</td>
+	 <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+	    <td><%= link_to raw("<i class=\"icon-plus icon-white\"></i>"), increase_line_item_path(line_item), :method => :put, remote: true %></td>
+	 <td>
+	<%= link_to( raw("<i class=\"icon-trash icon-white\"></i>"),   decrease_line_item_path(line_item),:method => :put, remote: true  ) %></td>
+
+
 </tr>
 

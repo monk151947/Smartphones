@@ -17,6 +17,21 @@ before_destroy :ensure_not_referenced_by_any_line_item
   end
 
 
+def decrease(line_item_id)
+    current_item = line_items.find(line_item_id)
+    if current_item.quantity > 1
+      current_item.quantity -= 1
+    else
+      current_item.destroy
+    end
+    current_item
+  end
+
+  def increase(line_item_id)
+    current_item = line_items.find(line_item_id)
+    current_item.quantity += 1
+    current_item
+  end
 
 private
 
