@@ -1,4 +1,4 @@
-Shopping cart for smart phones Demo application from the book "Agile web development" with Twitter Bootstrap.
+Shopping cart for smart phones Demo application
 
 
 
